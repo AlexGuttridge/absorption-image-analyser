@@ -8,9 +8,9 @@ load maindata.mat;
 
 %% Solis image naming
 
-dataA_sp2 = 'data004.asc';
-dataB_sp2 = 'data005.asc';
-dataC_sp2 = 'data006.asc';
+dataA_sp2 = 'Cs001.asc';
+dataB_sp2 = 'Cs002.asc';
+dataC_sp2 = 'Cs003.asc';
 
 
 %% Sync to Dexter
@@ -69,9 +69,9 @@ end
 
 if (exist(strcat(imagedir_sp2,dataA_sp2)) & exist(strcat(imagedir_sp2,dataB_sp2)) & exist(strcat(imagedir_sp2,dataC_sp2)))
     
-    D = loadascii(strcat(imagedir_sp2,dataA_sp2),strcat('data004')); %atoms in cloud + background
-    E = loadascii(strcat(imagedir_sp2,dataB_sp2),strcat('data005')); %probe + background only
-    F = loadascii(strcat(imagedir_sp2,dataC_sp2),strcat('data006')); %background
+    D = loadascii(strcat(imagedir_sp2,dataA_sp2),strcat('Cs001')); %atoms in cloud + background
+    E = loadascii(strcat(imagedir_sp2,dataB_sp2),strcat('Cs002')); %probe + background only
+    F = loadascii(strcat(imagedir_sp2,dataC_sp2),strcat('Cs003')); %background
     
     D = rot90(D,numrotations_sp2);
     E = rot90(E,numrotations_sp2);

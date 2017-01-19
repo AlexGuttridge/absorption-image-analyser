@@ -1,7 +1,10 @@
 % getplotrange.m
 % Gets the plot range according to file number from the text box.
 
-load dataplotterstore.mat
+if exist('dataplotterstore.mat','file')==2
+    load dataplotterstore.mat
+end
+    
 load maindata.mat
 load configdata.mat
 

@@ -29,7 +29,7 @@ getplotrange;   % grabs plot range from text box
 
 axes(handles.dataplot1);
 
-if menuvalue_x1 == 2
+if menuvalue_x6 == 2
     x1_label = plotvariablename;
     save('maindata','x1_label','-append');
 end
@@ -44,26 +44,77 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x1_points_sp1(stored_index_sp1),y1_points_sp1(stored_index_sp1),'x')   
-    axis tight
+    plot(x1_points_sp1(stored_index_sp1),y1_points_sp1(stored_index_sp1),'*','LineWidth',1.5)   
+    if x1_points_sp1(stored_index_sp1) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x1_points_sp1(stored_index_sp1))-0.1*(max(x1_points_sp1(stored_index_sp1))-min(x1_points_sp1(stored_index_sp1))) max(x1_points_sp1(stored_index_sp1))+0.1*(max(x1_points_sp1(stored_index_sp1))-min(x1_points_sp1(stored_index_sp1)))])
+    end
+
+    if y1_points_sp1(stored_index_sp1) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y1_points_sp1(stored_index_sp1))-0.1*(max(y1_points_sp1(stored_index_sp1))-min(y1_points_sp1(stored_index_sp1))) max(y1_points_sp1(stored_index_sp1))+0.1*(max(y1_points_sp1(stored_index_sp1))-min(y1_points_sp1(stored_index_sp1)))])
+    end
+
     
 end
     
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 0)
     
-    plot(x1_points_sp2(stored_index_sp2),y1_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255)
-    axis tight
+    plot(x1_points_sp2(stored_index_sp2),y1_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255,'LineWidth',1.5)
+    
+    if x1_points_sp2(stored_index_sp2) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x1_points_sp2(stored_index_sp2))-0.1*(max(x1_points_sp2(stored_index_sp2))-min(x1_points_sp2(stored_index_sp2))) max(x1_points_sp2(stored_index_sp2))+0.1*(max(x1_points_sp2(stored_index_sp2))-min(x1_points_sp2(stored_index_sp2)))])
+    end
+
+    if y1_points_sp2(stored_index_sp2) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y1_points_sp2(stored_index_sp2))-0.1*(max(y1_points_sp2(stored_index_sp2))-min(y1_points_sp2(stored_index_sp2))) max(y1_points_sp2(stored_index_sp2))+0.1*(max(y1_points_sp2(stored_index_sp2))-min(y1_points_sp2(stored_index_sp2)))])
+    end
     
 end
         
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x1_points_sp1(stored_index_sp1),y1_points_sp1(stored_index_sp1),x1_points_sp2(stored_index_sp2),y1_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = '*';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    hLine1.LineWidth = 1.5;
+    hLine2.LineWidth = 1.5;
+    
+    if x1_points_sp1(stored_index_sp1) == 0
+        xlim(hAx(1),[-1 1])
+    else
+        xlim(hAx(1),[min(x1_points_sp1(stored_index_sp1))-0.1*(max(x1_points_sp1(stored_index_sp1))-min(x1_points_sp1(stored_index_sp1))) max(x1_points_sp1(stored_index_sp1))+0.1*(max(x1_points_sp1(stored_index_sp1))-min(x1_points_sp1(stored_index_sp1)))])
+    end
+
+    if y1_points_sp1(stored_index_sp1) == 0
+        ylim(hAx(1),[-1 1])
+    else
+        
+        ylim(hAx(1),[min(y1_points_sp1(stored_index_sp1))-0.1*(max(y1_points_sp1(stored_index_sp1))-min(y1_points_sp1(stored_index_sp1))) max(y1_points_sp1(stored_index_sp1))+0.1*(max(y1_points_sp1(stored_index_sp1))-min(y1_points_sp1(stored_index_sp1)))])
+    end
+    
+   
+    if x1_points_sp2(stored_index_sp2) == 0
+        xlim(hAx(2),[-1 1])
+    else
+        xlim(hAx(2),[min(x1_points_sp2(stored_index_sp2))-0.1*(max(x1_points_sp2(stored_index_sp2))-min(x1_points_sp2(stored_index_sp2))) max(x1_points_sp2(stored_index_sp2))+0.1*(max(x1_points_sp2(stored_index_sp2))-min(x1_points_sp2(stored_index_sp2)))])
+    end
+
+    if y1_points_sp2(stored_index_sp2) == 0
+        ylim(hAx(2),[-1 1])
+    else
+        
+        ylim(hAx(2),[min(y1_points_sp2(stored_index_sp2))-0.1*(max(y1_points_sp2(stored_index_sp2))-min(y1_points_sp2(stored_index_sp2))) max(y1_points_sp2(stored_index_sp2))+0.1*(max(y1_points_sp2(stored_index_sp2))-min(y1_points_sp2(stored_index_sp2)))])
+        
+    end
     
 end
 
@@ -90,26 +141,77 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x2_points_sp1(stored_index_sp1),y2_points_sp1(stored_index_sp1),'x')
-    axis tight
+    plot(x2_points_sp1(stored_index_sp1),y1_points_sp1(stored_index_sp1),'*','LineWidth',1.5)   
+    if x2_points_sp1(stored_index_sp1) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x2_points_sp1(stored_index_sp1))-0.1*(max(x2_points_sp1(stored_index_sp1))-min(x2_points_sp1(stored_index_sp1))) max(x2_points_sp1(stored_index_sp1))+0.1*(max(x2_points_sp1(stored_index_sp1))-min(x2_points_sp1(stored_index_sp1)))])
+    end
+
+    if y2_points_sp1(stored_index_sp1) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y2_points_sp1(stored_index_sp1))-0.1*(max(y2_points_sp1(stored_index_sp1))-min(y2_points_sp1(stored_index_sp1))) max(y2_points_sp1(stored_index_sp1))+0.1*(max(y2_points_sp1(stored_index_sp1))-min(y2_points_sp1(stored_index_sp1)))])
+    end
+
     
 end
     
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 0)
     
-    plot(x2_points_sp2(stored_index_sp2),y2_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255)
-    axis tight
+    plot(x2_points_sp2(stored_index_sp2),y2_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255,'LineWidth',1.5)
+    
+    if x2_points_sp2(stored_index_sp2) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x2_points_sp2(stored_index_sp2))-0.1*(max(x2_points_sp2(stored_index_sp2))-min(x2_points_sp2(stored_index_sp2))) max(x2_points_sp2(stored_index_sp2))+0.1*(max(x2_points_sp2(stored_index_sp2))-min(x2_points_sp2(stored_index_sp2)))])
+    end
+
+    if y2_points_sp2(stored_index_sp2) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y2_points_sp2(stored_index_sp2))-0.1*(max(y2_points_sp2(stored_index_sp2))-min(y2_points_sp2(stored_index_sp2))) max(y2_points_sp2(stored_index_sp2))+0.1*(max(y2_points_sp2(stored_index_sp2))-min(y2_points_sp2(stored_index_sp2)))])
+    end
     
 end
-
+        
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x2_points_sp1(stored_index_sp1),y2_points_sp1(stored_index_sp1),x2_points_sp2(stored_index_sp2),y2_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = '*';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    hLine1.LineWidth = 1.5;
+    hLine2.LineWidth = 1.5;
+    
+    if x2_points_sp1(stored_index_sp1) == 0
+        xlim(hAx(1),[-1 1])
+    else
+        xlim(hAx(1),[min(x2_points_sp1(stored_index_sp1))-0.1*(max(x2_points_sp1(stored_index_sp1))-min(x2_points_sp1(stored_index_sp1))) max(x2_points_sp1(stored_index_sp1))+0.1*(max(x2_points_sp1(stored_index_sp1))-min(x2_points_sp1(stored_index_sp1)))])
+    end
+
+    if y2_points_sp1(stored_index_sp1) == 0
+        ylim(hAx(1),[-1 1])
+    else
+        
+        ylim(hAx(1),[min(y2_points_sp1(stored_index_sp1))-0.1*(max(y2_points_sp1(stored_index_sp1))-min(y2_points_sp1(stored_index_sp1))) max(y2_points_sp1(stored_index_sp1))+0.1*(max(y2_points_sp1(stored_index_sp1))-min(y2_points_sp1(stored_index_sp1)))])
+    end
+    
+   
+    if x2_points_sp2(stored_index_sp2) == 0
+        xlim(hAx(2),[-1 1])
+    else
+        xlim(hAx(2),[min(x2_points_sp2(stored_index_sp2))-0.1*(max(x2_points_sp2(stored_index_sp2))-min(x2_points_sp2(stored_index_sp2))) max(x2_points_sp2(stored_index_sp2))+0.1*(max(x2_points_sp2(stored_index_sp2))-min(x2_points_sp2(stored_index_sp2)))])
+    end
+
+    if y2_points_sp2(stored_index_sp2) == 0
+        ylim(hAx(2),[-1 1])
+    else
+        
+        ylim(hAx(2),[min(y2_points_sp2(stored_index_sp2))-0.1*(max(y2_points_sp2(stored_index_sp2))-min(y2_points_sp2(stored_index_sp2))) max(y2_points_sp2(stored_index_sp2))+0.1*(max(y2_points_sp2(stored_index_sp2))-min(y2_points_sp2(stored_index_sp2)))])
+        
+    end
     
 end
 
@@ -136,26 +238,77 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x3_points_sp1(stored_index_sp1),y3_points_sp1(stored_index_sp1),'x')
-    axis tight
+    plot(x3_points_sp1(stored_index_sp1),y3_points_sp1(stored_index_sp1),'*','LineWidth',1.5)   
+    if x3_points_sp1(stored_index_sp1) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x3_points_sp1(stored_index_sp1))-0.1*(max(x3_points_sp1(stored_index_sp1))-min(x3_points_sp1(stored_index_sp1))) max(x3_points_sp1(stored_index_sp1))+0.1*(max(x3_points_sp1(stored_index_sp1))-min(x3_points_sp1(stored_index_sp1)))])
+    end
+
+    if y3_points_sp1(stored_index_sp1) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y3_points_sp1(stored_index_sp1))-0.1*(max(y3_points_sp1(stored_index_sp1))-min(y3_points_sp1(stored_index_sp1))) max(y3_points_sp1(stored_index_sp1))+0.1*(max(y3_points_sp1(stored_index_sp1))-min(y3_points_sp1(stored_index_sp1)))])
+    end
+
     
 end
     
-if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 0) 
+if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 0)
     
-    plot(x3_points_sp2(stored_index_sp2),y3_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255)
-    axis tight
+    plot(x3_points_sp2(stored_index_sp2),y3_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255,'LineWidth',1.5)
+    
+    if x3_points_sp2(stored_index_sp2) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x3_points_sp2(stored_index_sp2))-0.1*(max(x3_points_sp2(stored_index_sp2))-min(x3_points_sp2(stored_index_sp2))) max(x3_points_sp2(stored_index_sp2))+0.1*(max(x3_points_sp2(stored_index_sp2))-min(x3_points_sp2(stored_index_sp2)))])
+    end
+
+    if y3_points_sp2(stored_index_sp2) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y3_points_sp2(stored_index_sp2))-0.1*(max(y3_points_sp2(stored_index_sp2))-min(y3_points_sp2(stored_index_sp2))) max(y3_points_sp2(stored_index_sp2))+0.1*(max(y3_points_sp2(stored_index_sp2))-min(y3_points_sp2(stored_index_sp2)))])
+    end
     
 end
         
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
-        
+    
     [hAx,hLine1,hLine2] = plotyy(x3_points_sp1(stored_index_sp1),y3_points_sp1(stored_index_sp1),x3_points_sp2(stored_index_sp2),y3_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = '*';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    hLine1.LineWidth = 1.5;
+    hLine2.LineWidth = 1.5;
+    
+    if x3_points_sp1(stored_index_sp1) == 0
+        xlim(hAx(1),[-1 1])
+    else
+        xlim(hAx(1),[min(x3_points_sp1(stored_index_sp1))-0.1*(max(x3_points_sp1(stored_index_sp1))-min(x3_points_sp1(stored_index_sp1))) max(x3_points_sp1(stored_index_sp1))+0.1*(max(x3_points_sp1(stored_index_sp1))-min(x3_points_sp1(stored_index_sp1)))])
+    end
+
+    if y3_points_sp1(stored_index_sp1) == 0
+        ylim(hAx(1),[-1 1])
+    else
+        
+        ylim(hAx(1),[min(y3_points_sp1(stored_index_sp1))-0.1*(max(y3_points_sp1(stored_index_sp1))-min(y3_points_sp1(stored_index_sp1))) max(y3_points_sp1(stored_index_sp1))+0.1*(max(y3_points_sp1(stored_index_sp1))-min(y3_points_sp1(stored_index_sp1)))])
+    end
+    
+   
+    if x3_points_sp2(stored_index_sp2) == 0
+        xlim(hAx(2),[-1 1])
+    else
+        xlim(hAx(2),[min(x3_points_sp2(stored_index_sp2))-0.1*(max(x3_points_sp2(stored_index_sp2))-min(x3_points_sp2(stored_index_sp2))) max(x3_points_sp2(stored_index_sp2))+0.1*(max(x3_points_sp2(stored_index_sp2))-min(x3_points_sp2(stored_index_sp2)))])
+    end
+
+    if y3_points_sp2(stored_index_sp2) == 0
+        ylim(hAx(2),[-1 1])
+    else
+        
+        ylim(hAx(2),[min(y3_points_sp2(stored_index_sp2))-0.1*(max(y3_points_sp2(stored_index_sp2))-min(y3_points_sp2(stored_index_sp2))) max(y3_points_sp2(stored_index_sp2))+0.1*(max(y3_points_sp2(stored_index_sp2))-min(y3_points_sp2(stored_index_sp2)))])
+        
+    end
     
 end
 
@@ -182,29 +335,79 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x4_points_sp1(stored_index_sp1),y4_points_sp1(stored_index_sp1),'x')
-    axis tight
+    plot(x4_points_sp1(stored_index_sp1),y4_points_sp1(stored_index_sp1),'*','LineWidth',1.5)   
+    if x4_points_sp1(stored_index_sp1) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x4_points_sp1(stored_index_sp1))-0.1*(max(x4_points_sp1(stored_index_sp1))-min(x4_points_sp1(stored_index_sp1))) max(x4_points_sp1(stored_index_sp1))+0.1*(max(x4_points_sp1(stored_index_sp1))-min(x4_points_sp1(stored_index_sp1)))])
+    end
+
+    if y4_points_sp1(stored_index_sp1) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y4_points_sp1(stored_index_sp1))-0.1*(max(y4_points_sp1(stored_index_sp1))-min(y4_points_sp1(stored_index_sp1))) max(y4_points_sp1(stored_index_sp1))+0.1*(max(y4_points_sp1(stored_index_sp1))-min(y4_points_sp1(stored_index_sp1)))])
+    end
+
     
 end
     
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 0)
     
-    plot(x4_points_sp2(stored_index_sp2),y4_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255)
-    axis tight
+    plot(x4_points_sp2(stored_index_sp2),y4_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255,'LineWidth',1.5)
+    
+    if x4_points_sp2(stored_index_sp2) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x4_points_sp2(stored_index_sp2))-0.1*(max(x4_points_sp2(stored_index_sp2))-min(x4_points_sp2(stored_index_sp2))) max(x4_points_sp2(stored_index_sp2))+0.1*(max(x4_points_sp2(stored_index_sp2))-min(x4_points_sp2(stored_index_sp2)))])
+    end
+
+    if y4_points_sp2(stored_index_sp2) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y4_points_sp2(stored_index_sp2))-0.1*(max(y4_points_sp2(stored_index_sp2))-min(y4_points_sp2(stored_index_sp2))) max(y4_points_sp2(stored_index_sp2))+0.1*(max(y4_points_sp2(stored_index_sp2))-min(y4_points_sp2(stored_index_sp2)))])
+    end
     
 end
         
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x4_points_sp1(stored_index_sp1),y4_points_sp1(stored_index_sp1),x4_points_sp2(stored_index_sp2),y4_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = '*';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    hLine1.LineWidth = 1.5;
+    hLine2.LineWidth = 1.5;
+    
+    if x4_points_sp1(stored_index_sp1) == 0
+        xlim(hAx(1),[-1 1])
+    else
+        xlim(hAx(1),[min(x4_points_sp1(stored_index_sp1))-0.1*(max(x4_points_sp1(stored_index_sp1))-min(x4_points_sp1(stored_index_sp1))) max(x4_points_sp1(stored_index_sp1))+0.1*(max(x4_points_sp1(stored_index_sp1))-min(x4_points_sp1(stored_index_sp1)))])
+    end
+
+    if y4_points_sp1(stored_index_sp1) == 0
+        ylim(hAx(1),[-1 1])
+    else
+        
+        ylim(hAx(1),[min(y4_points_sp1(stored_index_sp1))-0.1*(max(y4_points_sp1(stored_index_sp1))-min(y4_points_sp1(stored_index_sp1))) max(y4_points_sp1(stored_index_sp1))+0.1*(max(y4_points_sp1(stored_index_sp1))-min(y4_points_sp1(stored_index_sp1)))])
+    end
+    
+   
+    if x4_points_sp2(stored_index_sp2) == 0
+        xlim(hAx(2),[-1 1])
+    else
+        xlim(hAx(2),[min(x4_points_sp2(stored_index_sp2))-0.1*(max(x4_points_sp2(stored_index_sp2))-min(x4_points_sp2(stored_index_sp2))) max(x4_points_sp2(stored_index_sp2))+0.1*(max(x4_points_sp2(stored_index_sp2))-min(x4_points_sp2(stored_index_sp2)))])
+    end
+
+    if y4_points_sp2(stored_index_sp2) == 0
+        ylim(hAx(2),[-1 1])
+    else
+        
+        ylim(hAx(2),[min(y4_points_sp2(stored_index_sp2))-0.1*(max(y4_points_sp2(stored_index_sp2))-min(y4_points_sp2(stored_index_sp2))) max(y4_points_sp2(stored_index_sp2))+0.1*(max(y4_points_sp2(stored_index_sp2))-min(y4_points_sp2(stored_index_sp2)))])
+        
+    end
     
 end
-
 xlabel(x4_label)
 ylabel(y4_label)
 
@@ -228,29 +431,79 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x5_points_sp1(stored_index_sp1),y5_points_sp1(stored_index_sp1),'x')
-    axis tight
+    plot(x5_points_sp1(stored_index_sp1),y5_points_sp1(stored_index_sp1),'*','LineWidth',1.5)   
+    if x5_points_sp1(stored_index_sp1) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x5_points_sp1(stored_index_sp1))-0.1*(max(x5_points_sp1(stored_index_sp1))-min(x5_points_sp1(stored_index_sp1))) max(x5_points_sp1(stored_index_sp1))+0.1*(max(x5_points_sp1(stored_index_sp1))-min(x5_points_sp1(stored_index_sp1)))])
+    end
+
+    if y5_points_sp1(stored_index_sp1) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y5_points_sp1(stored_index_sp1))-0.1*(max(y5_points_sp1(stored_index_sp1))-min(y5_points_sp1(stored_index_sp1))) max(y5_points_sp1(stored_index_sp1))+0.1*(max(y5_points_sp1(stored_index_sp1))-min(y5_points_sp1(stored_index_sp1)))])
+    end
+
     
 end
     
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 0)
     
-    plot(x5_points_sp2(stored_index_sp2),y5_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255)
-    axis tight
+    plot(x5_points_sp2(stored_index_sp2),y5_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255,'LineWidth',1.5)
+    
+    if x5_points_sp2(stored_index_sp2) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x5_points_sp2(stored_index_sp2))-0.1*(max(x5_points_sp2(stored_index_sp2))-min(x5_points_sp2(stored_index_sp2))) max(x5_points_sp2(stored_index_sp2))+0.1*(max(x5_points_sp2(stored_index_sp2))-min(x5_points_sp2(stored_index_sp2)))])
+    end
+
+    if y5_points_sp2(stored_index_sp2) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y5_points_sp2(stored_index_sp2))-0.1*(max(y5_points_sp2(stored_index_sp2))-min(y5_points_sp2(stored_index_sp2))) max(y5_points_sp2(stored_index_sp2))+0.1*(max(y5_points_sp2(stored_index_sp2))-min(y5_points_sp2(stored_index_sp2)))])
+    end
     
 end
         
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x5_points_sp1(stored_index_sp1),y5_points_sp1(stored_index_sp1),x5_points_sp2(stored_index_sp2),y5_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = '*';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    hLine1.LineWidth = 1.5;
+    hLine2.LineWidth = 1.5;
+    
+    if x5_points_sp1(stored_index_sp1) == 0
+        xlim(hAx(1),[-1 1])
+    else
+        xlim(hAx(1),[min(x5_points_sp1(stored_index_sp1))-0.1*(max(x5_points_sp1(stored_index_sp1))-min(x5_points_sp1(stored_index_sp1))) max(x5_points_sp1(stored_index_sp1))+0.1*(max(x5_points_sp1(stored_index_sp1))-min(x5_points_sp1(stored_index_sp1)))])
+    end
+
+    if y5_points_sp1(stored_index_sp1) == 0
+        ylim(hAx(1),[-1 1])
+    else
+        
+        ylim(hAx(1),[min(y5_points_sp1(stored_index_sp1))-0.1*(max(y5_points_sp1(stored_index_sp1))-min(y5_points_sp1(stored_index_sp1))) max(y5_points_sp1(stored_index_sp1))+0.1*(max(y5_points_sp1(stored_index_sp1))-min(y5_points_sp1(stored_index_sp1)))])
+    end
+    
+   
+    if x5_points_sp2(stored_index_sp2) == 0
+        xlim(hAx(2),[-1 1])
+    else
+        xlim(hAx(2),[min(x5_points_sp2(stored_index_sp2))-0.1*(max(x5_points_sp2(stored_index_sp2))-min(x5_points_sp2(stored_index_sp2))) max(x5_points_sp2(stored_index_sp2))+0.1*(max(x5_points_sp2(stored_index_sp2))-min(x5_points_sp2(stored_index_sp2)))])
+    end
+
+    if y5_points_sp2(stored_index_sp2) == 0
+        ylim(hAx(2),[-1 1])
+    else
+        
+        ylim(hAx(2),[min(y5_points_sp2(stored_index_sp2))-0.1*(max(y5_points_sp2(stored_index_sp2))-min(y5_points_sp2(stored_index_sp2))) max(y5_points_sp2(stored_index_sp2))+0.1*(max(y5_points_sp2(stored_index_sp2))-min(y5_points_sp2(stored_index_sp2)))])
+        
+    end
     
 end
-
 xlabel(x5_label)
 ylabel(y5_label)
 
@@ -274,26 +527,77 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x6_points_sp1(stored_index_sp1),y6_points_sp1(stored_index_sp1),'x')
-    axis tight
+    plot(x6_points_sp1(stored_index_sp1),y6_points_sp1(stored_index_sp1),'*','LineWidth',1.5)   
+    if x6_points_sp1(stored_index_sp1) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x6_points_sp1(stored_index_sp1))-0.1*(max(x6_points_sp1(stored_index_sp1))-min(x6_points_sp1(stored_index_sp1))) max(x6_points_sp1(stored_index_sp1))+0.1*(max(x6_points_sp1(stored_index_sp1))-min(x6_points_sp1(stored_index_sp1)))])
+    end
+
+    if y6_points_sp1(stored_index_sp1) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y6_points_sp1(stored_index_sp1))-0.1*(max(y6_points_sp1(stored_index_sp1))-min(y6_points_sp1(stored_index_sp1))) max(y6_points_sp1(stored_index_sp1))+0.1*(max(y6_points_sp1(stored_index_sp1))-min(y6_points_sp1(stored_index_sp1)))])
+    end
+
     
 end
     
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 0)
     
-    plot(x6_points_sp2(stored_index_sp2),y6_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255)
-    axis tight
+    plot(x6_points_sp2(stored_index_sp2),y6_points_sp2(stored_index_sp2),'o','color',[217 83 25]/255,'LineWidth',1.5)
+    
+    if x6_points_sp2(stored_index_sp2) == 0
+        xlim([-1 1])
+    else
+        xlim([min(x6_points_sp2(stored_index_sp2))-0.1*(max(x6_points_sp2(stored_index_sp2))-min(x6_points_sp2(stored_index_sp2))) max(x6_points_sp2(stored_index_sp2))+0.1*(max(x6_points_sp2(stored_index_sp2))-min(x6_points_sp2(stored_index_sp2)))])
+    end
+
+    if y6_points_sp2(stored_index_sp2) == 0
+        ylim([-1 1])
+    else
+        ylim([min(y6_points_sp2(stored_index_sp2))-0.1*(max(y6_points_sp2(stored_index_sp2))-min(y6_points_sp2(stored_index_sp2))) max(y6_points_sp2(stored_index_sp2))+0.1*(max(y6_points_sp2(stored_index_sp2))-min(y6_points_sp2(stored_index_sp2)))])
+    end
     
 end
-
+        
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x6_points_sp1(stored_index_sp1),y6_points_sp1(stored_index_sp1),x6_points_sp2(stored_index_sp2),y6_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = '*';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    hLine1.LineWidth = 1.5;
+    hLine2.LineWidth = 1.5;
+    
+    if x6_points_sp1(stored_index_sp1) == 0
+        xlim(hAx(1),[-1 1])
+    else
+        xlim(hAx(1),[min(x6_points_sp1(stored_index_sp1))-0.1*(max(x6_points_sp1(stored_index_sp1))-min(x6_points_sp1(stored_index_sp1))) max(x6_points_sp1(stored_index_sp1))+0.1*(max(x6_points_sp1(stored_index_sp1))-min(x6_points_sp1(stored_index_sp1)))])
+    end
+
+    if y6_points_sp1(stored_index_sp1) == 0
+        ylim(hAx(1),[-1 1])
+    else
+        
+        ylim(hAx(1),[min(y6_points_sp1(stored_index_sp1))-0.1*(max(y6_points_sp1(stored_index_sp1))-min(y6_points_sp1(stored_index_sp1))) max(y6_points_sp1(stored_index_sp1))+0.1*(max(y6_points_sp1(stored_index_sp1))-min(y6_points_sp1(stored_index_sp1)))])
+    end
+    
+   
+    if x6_points_sp2(stored_index_sp2) == 0
+        xlim(hAx(2),[-1 1])
+    else
+        xlim(hAx(2),[min(x6_points_sp2(stored_index_sp2))-0.1*(max(x6_points_sp2(stored_index_sp2))-min(x6_points_sp2(stored_index_sp2))) max(x6_points_sp2(stored_index_sp2))+0.1*(max(x6_points_sp2(stored_index_sp2))-min(x1_points_sp2(stored_index_sp2)))])
+    end
+
+    if y6_points_sp2(stored_index_sp2) == 0
+        ylim(hAx(2),[-1 1])
+    else
+        
+        ylim(hAx(2),[min(y6_points_sp2(stored_index_sp2))-0.1*(max(y6_points_sp2(stored_index_sp2))-min(y6_points_sp2(stored_index_sp2))) max(y6_points_sp2(stored_index_sp2))+0.1*(max(y6_points_sp2(stored_index_sp2))-min(y6_points_sp2(stored_index_sp2)))])
+        
+    end
     
 end
 

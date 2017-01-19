@@ -9,7 +9,7 @@ load maindata.mat
 
 % If fringe removal is being used, this goes first.
 % if useFR_sp1 == 1
-%     removefringes_sp1;
+%     removefringes_sp1;  
 % end
 
 A = A - C;    % subtract background

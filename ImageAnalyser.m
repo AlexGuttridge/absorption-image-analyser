@@ -1429,11 +1429,13 @@ handles.variable = get(hObject,'String');
 load maindata
 load configdata
 
+variableValue = str2num(handles.variable);
+
 % if varsync == 0
     
     if sepspecies == 0
         
-        variableValue = str2num(handles.variable);
+        
         
         if isempty(variableValue)
             
@@ -1456,6 +1458,18 @@ load configdata
             
             updateplottab;
             
+        end
+        
+    else
+        
+        load dataplotterstore
+        
+        variable_store_sp1(end) = variableValue;
+        save('dataplotterstore','variable_store_sp1','-append');
+        
+        if twospecies == 1
+            variable_store_sp2(end) = variableValue;
+            save('dataplotterstore','variable_store_sp2','-append');
         end
         
     end
@@ -2566,7 +2580,7 @@ handles.variable = get(hObject,'String');
 load maindata
 load configdata
 
-if varsync == 0
+% if varsync == 0
     
     if sepspecies == 1
         
@@ -2602,7 +2616,7 @@ if varsync == 0
         
     end
     
-end
+% end
 
 guidata(hObject, handles);
 

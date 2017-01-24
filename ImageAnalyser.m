@@ -1425,46 +1425,24 @@ function edit_variable_Callback(hObject, eventdata, handles)
 %        str2double(get(hObject,'String')) returns contents of edit_variable as a double
 
 handles.variable = get(hObject,'String');
-
 load maindata
 load configdata
-
+    
 variableValue = str2num(handles.variable);
-
-% if varsync == 0
+    
+if isempty(variableValue)
+    
+    errordlg({'Value must be numeric! Please re-enter.'},'Bad thing')
+    
+else
+    
+    save('maindata','variableValue','-append');
+    
+    load dataplotterstore
     
     if sepspecies == 0
         
-        
-        
-        if isempty(variableValue)
-            
-            errordlg({'Value must be numeric! Please re-enter.'},'Bad thing')
-            
-        else
-            
-            save('maindata','variableValue','-append');
-            
-            load dataplotterstore
-            load configdata
-            
-            variable_store_sp1(end) = variableValue;    % update data plotter storage file if variable is edited
-            save('dataplotterstore','variable_store_sp1','-append');
-            
-            if twospecies == 1
-                variable_store_sp2(end) = variableValue;
-                save('dataplotterstore','variable_store_sp2','-append');
-            end
-            
-            updateplottab;
-            
-        end
-        
-    else
-        
-        load dataplotterstore
-        
-        variable_store_sp1(end) = variableValue;
+        variable_store_sp1(end) = variableValue;    % update data plotter storage file if variable is edited
         save('dataplotterstore','variable_store_sp1','-append');
         
         if twospecies == 1
@@ -1472,11 +1450,19 @@ variableValue = str2num(handles.variable);
             save('dataplotterstore','variable_store_sp2','-append');
         end
         
+    else
+        
+        variable_store_sp1(end) = variableValue;    % update data plotter storage file if variable is edited
+        save('dataplotterstore','variable_store_sp1','-append');
+        
     end
     
-% end
+    updateplottab;
+
+end
 
 guidata(hObject, handles);
+
 
 
 % --- Executes during object creation, after setting all properties.
@@ -2580,7 +2566,40 @@ handles.variable = get(hObject,'String');
 load maindata
 load configdata
 
-% if varsync == 0
+variableValue = str2num(handles.variable);
+    
+if isempty(variableValue)
+    
+    errordlg({'Value must be numeric! Please re-enter.'},'Bad thing')
+    
+else
+    
+    load dataplotterstore
+    
+    if sepspecies == 1
+        
+        variable_store_sp2(end) = variableValue;
+        save('dataplotterstore','variable_store_sp2','-append');
+        
+    else
+        
+        save('maindata','variableValue','-append');
+        
+        variable_store_sp2(end) = variableValue;    % update data plotter storage file if variable is edited
+        save('dataplotterstore','variable_store_sp2','-append');
+        
+        if twospecies == 1
+            variable_store_sp1(end) = variableValue;
+            save('dataplotterstore','variable_store_sp1','-append');
+        end
+        
+        updateplottab;
+        
+    end
+    
+end
+
+if varsync == 0
     
     if sepspecies == 1
         

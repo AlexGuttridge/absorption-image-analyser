@@ -19,5 +19,6 @@ imagesc(xpts,ypts,A_save)
 % colour = str2num(get(handles.edit_ODrange_sp1,'String'));
 % axes(handles.axes_2d_sp1);
 caxis(colour_sp1)
+colormap jet
 axis equal
 axis tight

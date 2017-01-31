@@ -2635,7 +2635,7 @@ if varsync == 0
         
     end
     
-% end
+end
 
 guidata(hObject, handles);
 

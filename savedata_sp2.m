@@ -100,12 +100,12 @@ stringtemp = get(handles.edit_label_sp2,'String'); % Extract comment for particu
 stringtemp(stringtemp == ',') = ';'; % Replace commas with semicolons, as commas mess up csv log file.
 lfc_sp2{21}{recpos} = stringtemp; % Comment for particular file
 
-lfc_sp2{22}{recpos} = num2str(handles.NOD_sp1,'%6.3f'); % Number from OD
-lfc_sp2{23}{recpos} = num2str(handles.Npx_sp1,'%6.3f'); % Number from pixel sum
-lfc_sp2{24}{recpos} = num2str(handles.Th_sp1,'%6.3f'); % Temp H (microK)
-lfc_sp2{25}{recpos} = num2str(handles.Tv_sp1,'%6.3f'); % Temp V (microK)
-lfc_sp2{26}{recpos} = num2str(handles.psdensity_sp1,'%6.3f'); % Phase space density
-lfc_sp2{27}{recpos} = num2str(handles.npk_sp1,'%6.3f'); % Peak density
+lfc_sp2{22}{recpos} = num2str(handles.NOD_sp2,'%6.3f'); % Number from OD
+lfc_sp2{23}{recpos} = num2str(handles.Npx_sp2,'%6.3f'); % Number from pixel sum
+lfc_sp2{24}{recpos} = num2str(handles.Th_sp2,'%6.3f'); % Temp H (microK)
+lfc_sp2{25}{recpos} = num2str(handles.Tv_sp2,'%6.3f'); % Temp V (microK)
+lfc_sp2{26}{recpos} = num2str(handles.psdensity_sp2,'%6.3f'); % Phase space density
+lfc_sp2{27}{recpos} = num2str(handles.npk_sp2,'%6.3f'); % Peak density
 
 % Test if we are doing TF fitting
 switch fittype_sp1

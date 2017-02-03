@@ -26,4 +26,4 @@ crossx = handles.crossxnew_sp2;
 crossz = handles.crossznew_sp2;
 crossxfit = handles.crossxfitnew_sp2;
 crosszfit = handles.crosszfitnew_sp2;
-opticaldepth_sp2 = crossxfit(2) + crossxfit(1);
+opticaldepth = crossxfit(2) + crossxfit(1);
